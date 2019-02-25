@@ -15,6 +15,54 @@ Edit the file "`build.sh`" and set the variables listed below:
 
 Then run the script "`build.sh`".
 
+# Users
+
+User "dev":
+
+* **user**: `dev`
+* **password**: `dev`
+
+User "root":
+
+* **user**: `root`
+* **password**: `admin`
+
+> See the [preseed file](data/preseed.cfg).
+
+# First connection
+
+    ssh -v -o PreferredAuthentications=password -o PubkeyAuthentication=no -p <ssh port> dev@<host>
+
+* `<ssh port>` is the port used by the SSH server (usually 22).
+* `<host>` is the host that runs the SSH server.
+
+Example:
+
+    ssh -v -o PreferredAuthentications=password -o PubkeyAuthentication=no -p 1122 dev@localhost
+
+# SSH configuration
+
+    wget https://raw.githubusercontent.com/denis-beurive/preseed-stretch/master/install/install_ssh_keys.sh
+    chmod +x install_ssh_keys.sh
+    ./install_ssh_keys.sh
+
+The SSH keys are:
+
+* [Public key](https://raw.githubusercontent.com/denis-beurive/preseed-stretch/master/data/vbox.pub.key).
+* [Private Key](https://raw.githubusercontent.com/denis-beurive/preseed-stretch/master/data/vbox.key).
+
+Example of configuration for the file `~/.ssh/config`:
+
+    host debian-host
+        HostName localhost
+        user dev
+        Port 1122
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/vbox.key
+        IdentitiesOnly yes
+
+Then you can run `ssh debian-host`.
+
 # links
 
 ## List of all Debian distributions
