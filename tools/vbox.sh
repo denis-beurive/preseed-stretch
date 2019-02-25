@@ -37,6 +37,6 @@ function get_download_url {
     echo "https://download.virtualbox.org/virtualbox/${major_version}"
 }
 
-echo "readonly VBOX_VERSION=$(get_version)"
-echo "readonly VBOX_MAJOR_VERSION=$(get_major_version)"
-echo "readonly VBOX_URL=$(get_download_url)"
+echo "readonly VBOX_VERSION='$(get_version)'"
+echo "readonly VBOX_MAJOR_VERSION='$(get_major_version)'"
+echo "readonly VBOX_URL='$(get_download_url)'"
