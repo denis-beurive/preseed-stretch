@@ -6,10 +6,14 @@ This repository presents the procedure used to build a custom ISO file that perf
 
 Standard Debian Stretch Minimal (netinst) ISO file: [debian-9.8.0-amd64-netinst.iso](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.8.0-amd64-netinst.iso)
 
+# Procedure
 
+Edit the file "`build.sh`" and set the variables listed below:
 
+* **ISO**: the path to the original (downloaded) ISO file.
+* **CUSTOM_ISO**: the path to the custom ISO file that will be created.
 
-
+Then run the script "`build.sh`".
 
 # links
 
