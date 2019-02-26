@@ -63,7 +63,16 @@ sudo apt-get install "${HEADERS}"
 readonly GUEST_ADDITIONS="VBoxGuestAdditions_${VBOX_MAJOR_VERSION}.iso"
 readonly URL="${VBOX_URL}/${GUEST_ADDITIONS}"
 
-wget "${URL}" && \
+if [ ! -f "${GUEST_ADDITIONS}" ]; then
+    echo "Download the Guest addition"
+    wget "${URL}"
+fi
+
+if [ -d "iso" ]; then
+    echo "A directory named \"iso\" already exists! Please delete it or run this script in another location."
+    exit 1
+fi
+
 mkdir iso && \
 sudo mount -o loop "${GUEST_ADDITIONS}" ./iso && \
 cd iso && \
