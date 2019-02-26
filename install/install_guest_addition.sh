@@ -44,6 +44,21 @@ prompt_continue
 echo
 
 # ---------------------------------------------------
+# Install the kernel headers
+# ---------------------------------------------------
+
+readonly HEADERS=$(apt-cache show linux-headers-$(uname -r) | egrep '^Package: ' | head -1 | sed 's/^Package: //')
+
+if [ -z "${HEADERS}" ]; then
+    echo "Cannot find the package that contains the kernel headers!"
+    exit 1
+fi
+
+sudo apt-get install "${HEADERS}"
+
+# ---------------------------------------------------
+# Install the guest addition
+# ---------------------------------------------------
 
 readonly GUEST_ADDITIONS="VBoxGuestAdditions_${VBOX_MAJOR_VERSION}.iso"
 readonly URL="${VBOX_URL}/${GUEST_ADDITIONS}"
