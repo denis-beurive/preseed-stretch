@@ -16,6 +16,10 @@ echo "SUCCESS !"
 echo
 echo "You may execute the commands below:"
 echo
-echo "   pip3.6 install --user pipenv"
-echo "   sudo pip3.6 install --upgrade pip"
+echo "   - pip3.6 install --user pipenv"
+echo "     # Install under ${HOME}/.local/bin/"
+echo
+echo "   - sudo pip3.6 install --upgrade pip"
+echo
+echo "   - pip3.6 --version"
 echo
