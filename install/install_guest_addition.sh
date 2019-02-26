@@ -69,6 +69,7 @@ sudo mount -o loop "${GUEST_ADDITIONS}" ./iso && \
 cd iso && \
 sudo ./VBoxLinuxAdditions.run && \
 cd - && \
+sudo umount iso
 
 echo 
 echo "SUCCESS"
