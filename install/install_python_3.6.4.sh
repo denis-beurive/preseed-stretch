@@ -11,4 +11,11 @@ cd Python-3.6.4
 ./configure --enable-optimizations
 make -j8
 sudo make altinstall
-
+echo
+echo "SUCCESS !"
+echo
+echo "You may execute the commands below:"
+echo
+echo "   pip3.6 install --user pipenv"
+echo "   sudo pip3.6 install --upgrade pip"
+echo
