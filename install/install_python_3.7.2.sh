@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# The set -e option instructs bash to immediately exit if any command has a non-zero exit status. 
+set -e
+
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
 sudo apt-get install -y libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
