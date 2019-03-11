@@ -28,3 +28,25 @@ wget "https://raw.githubusercontent.com/denis-beurive/preseed-stretch/master/ins
 sudo mv "/tmp/vsftpd.conf" "/etc/vsftpd.conf"
 sudo systemctl restart vsftpd && echo "OK"
 
+echo
+echo "Command to test that the FTP server is running"
+echo 
+cat <<EOS
+
+FTP_HOST=hostname
+FTP_USER=ftpuser
+FTP_PASS=ftppassword
+
+touch test
+(
+   echo "
+       open \${FTP_HOST}
+       user \${FTP_USER} \${FTP_PASS}
+       binary
+       put test
+       close
+   "
+) | ftp -dvin
+
+EOS
+
