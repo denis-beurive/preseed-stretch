@@ -1,7 +1,18 @@
 #!/bin/bash
 
-# The set -e option instructs bash to immediately exit if any command has a non-zero exit status. 
-set -e
+# Turn on "strict mode".
+# - See http://redsymbol.net/articles/unofficial-bash-strict-mode/.
+# - See https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html#The-Set-Builtin
+#
+# -e: exit immediately if a pipeline, which may consist of a single simple command, a list,
+#     or a compound command returns a non-zero status. 
+# -u: treat unset variables and parameters other than the special parameters ‘@’ or ‘*’ as
+#     an error when performing parameter expansion. An error message will be written to the
+#     standard error, and a non-interactive shell will exit.
+# -o pipefail: if set, the return value of a pipeline is the value of the last (rightmost)
+#              command to exit with a non-zero status, or zero if all commands in the pipeline
+#              exit successfully.
+set -eu -o pipefail
 
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
@@ -11,7 +22,7 @@ sudo apt-get install -y libncurses5-dev  libncursesw5-dev xz-utils tk-dev
 wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
 tar zxvf Python-3.7.2.tgz
 cd Python-3.7.2
-./configure --enable-optimizations
+./configure --enable-optimizations --enable-shared
 make -j8
 sudo make altinstall
 echo
