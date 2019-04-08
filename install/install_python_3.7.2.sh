@@ -19,7 +19,11 @@ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
 sudo apt-get install -y libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
 sudo apt-get install -y libncurses5-dev  libncursesw5-dev xz-utils tk-dev
 
-wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
+# libffi-dev is already installed on Debian 9.
+# But, on Ubuntu, you must install ot.
+sudo apt-get install -y libffi-dev
+
+wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
 tar zxvf Python-3.7.2.tgz
 cd Python-3.7.2
 ./configure --enable-optimizations --enable-shared
